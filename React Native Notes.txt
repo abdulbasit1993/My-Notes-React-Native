@@ -1,0 +1,19 @@
+React Native Notes:
+---------------------------
+
+How to pass data from one screen to another:
+On first screen from where to send data, syntax is like this:
+----------------------------------------------------------------------------------
+<TouchableOpacity
+  onPress={() => navigation.navigate('SignUpScreen', {key: useremail})}>
+  <Text style={styles.signuptext}>Sign Up</Text>
+</TouchableOpacity>
+----------------------------------------------------------------------------------
+On the second screen where you want to receive the data, do this:
+----------------------------------------------------------------------------------
+function SignUpScreen({navigation, route: {params}}) {
+  console.log('params -- > ', params);
+  .....
+}
+----------------------------------------------------------------------------------
+
