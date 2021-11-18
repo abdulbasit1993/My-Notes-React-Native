@@ -41,3 +41,28 @@ Generated APK will be located at `android/app/build/outputs/apk`
 ----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------
+
+
+
+How to Build Unsigned APK without the need for Metro development server:
+-----------------------------------------------------------------------------------------------------------
+In your app/build.gradle file you should see a large commented out block that explains which settings you can set in the project.ext.react map inside your gradle file:
+
+The one that is interesting to us is "bundleInDebug: true"
+Look for the "project.ext.react" map (should be right after the commented out block) in your gradle configuration file and add the "bundleInDebug: true" entry to the map:
+
+If you try this out, you will notice that while your app now runs without the dev server it will still display yellowbox warning messages. This is because it is still a development build. If you want to make it a production build, which will have no warnings and will have a minified JS bundle, add the "devDisabledInDebug: true" entry to the "project.ext.react" map like this: 
+
+project.ext.react = [
+    ...
+    bundleInDebug: true
+    
+    //ADD THIS LINE
+    devDisabledInDebug: true
+    ...
+]
+
+
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
+----------------------------------------------------------------------------------
